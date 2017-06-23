@@ -1,0 +1,157 @@
+﻿<!doctype html>
+<html lang="zh-cn" xmlns:wb="http://open.weibo.com/wb">
+ <head>
+     <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>简易计算器</title>
+ </head>
+ <body>
+ <div align="center">
+ <h1>简易计算器</h1>
+ </div>
+ <div align="center">
+  <table border="1px;" cellspacing="0px"style="width:296px;height:185px;background-color:silver;">
+   <tr style="background-color:pink;" align="center"><td colspan=4><input type="text" value="" style="width:200px;height:30px" id="mytext"></td></tr>
+
+   <tr><td><input type="button" value="power"style="width:50px"></td><td><input type="button" value="clear"style="width:50px" onclick="Clearfuns(this)"></td><td><input type="button" value="back"style="width:50px" onclick="Backfuns(this)"></td>
+
+   <tr><td><input type="button" value="1"style="width:50px"></td><td><input type="button" value="2"style="width:50px"></td><td><input type="button" value="3"style="width:50px"></td><td><input type="button" value="4"style="width:50px"></td></tr>
+
+   <tr><td><input type="button" value="5"style="width:50px"></td><td><input type="button" value="6"style="width:50px"></td><td><input type="button" value="7"style="width:50px"></td><td><input type="button" value="8"style="width:50px"></td></tr>
+
+   <tr><td><input type="button" value="9"style="width:50px"></td><td><input type="button" value="0"style="width:50px"></td><td><input type="button" value="."style="width:50px"></td><td><input type="button" value="="style="width:50px"></td></tr>
+
+   <tr><td><input type="button" value="+"style="width:50px"></td><td><input type="button" value="-"style="width:50px"></td><td><input type="button" value="*"style="width:50px"></td><td><input type="button" value="/"style="width:50px"></td></tr>
+  </table>
+  </div>
+  <script language="javascript">
+   var mytext=document.getElementById("mytext");
+   //window.alert(typeof(mytext));
+   var myinputs=document.getElementsByTagName("input");
+   var num1;//定义用来存储运算符前段的数值
+
+   var num2;//定义用来存储运算符后段的数值
+
+  var mysign;//定义运算符
+   //window.alert(typeof(myinputs));
+  /** //创建计算机类
+ 
+	 function test()
+	   { 
+		// window.alert(typeof(obj));
+		 window.alert("点击成功");
+         //myinputs.value=obj.value;
+		 
+	   }
+ 
+           
+		 
+  
+ //var mycomputer=new Computer();**/
+     //绑定事件1
+        for (var i=0;i<myinputs.length; i++)
+        {  
+			if(myinputs[i].value=="power"||myinputs[i].value=="clear"||myinputs[i].value=="back"||myinputs[i].type=="text")
+		     {
+				 continue;
+		     }else{
+				  //myinputs[i].onclick=function(){window.alert("ok");};
+				  //window.alert("绑定成功");
+				  /**myinputs[i].onclick="test";*/
+
+				  //对事件绑定了处理函数
+				     myinputs[i].onclick=function(){
+					  
+					 
+
+					  mytext.value+=this.value;
+					   //window.alert(mytext.value);
+					   var firstString=mytext.value.charAt(0);
+					  
+					   //window.alert(a)
+					   /**判断首个字符是不是运算符，isNaN()会进行隐式转化是的话清空**/
+					   if(isNaN(firstString))//写成a==NaN错误
+					    { 
+						   //window.alert("首字母");
+						   window,alert("首个必须是数字");
+						   mytext.value="";
+					    }
+						/**当用isNaN()转化,当我们输入到运算符时，不是数值，则进入判断**/
+						if(isNaN(mytext.value)&&this.value!="=")//注意隐式转换
+						{   // window.alert(mytext.value);
+							//截取字符串
+							var lastString=mytext.value.charAt(mytext.value.length-1);
+							
+							//window.alert(mysign);
+							if(isNaN(lastString))
+							 {   
+								mysign=lastString;//拿到运算符(注意isNaN()方法可以123+转化成数字)
+								num1= mytext.value.substring(0,mytext.value.length-1);//赋值给num1
+								//window.alert(num1);
+							 }
+							 
+						}
+						if(this.value=="=")
+							 {     
+								   var result;
+                                   mytext.value=mytext.value.substring(0,mytext.value.length-1);
+						           //window.alert(mytext.value);
+								  //window.alert(mysign);
+								   //window.alert(num1.length);
+								   num2=mytext.value.substring(num1.length+1,mytext.value.length+1);//拿到num2
+								  // window.alert(num2);
+								  // window.alert(mysign);
+								    //window.alert(num1);
+								  if(mysign=="+")
+								 {       
+									     result=parseInt(num1)+parseInt(num2);//+不会隐式转化的
+										 //window.alert(result);
+                                        // mytext.value+=result;
+                                         mytext.value+="="+result;
+								 }else if(mysign=="-"){
+                                          result=parseInt(num1)-parseInt(num2);
+                                           mytext.value+="="+result;
+								 }else if(mysign=="*"){
+                                          result=parseInt(num1)*parseInt(num2);
+                                           mytext.value+="="+result;
+								 }else{
+                                          
+										   result=parseInt(num1)/parseInt(num2);
+                                           mytext.value+="="+result;
+								 }
+
+							 }
+
+				  };     
+
+			     }
+        }
+		function Clearfuns(obj){
+			
+			mytext.value="";
+		}
+		function Backfuns(obj){
+			mytext.value=mytext.value.substring(0,mytext.value.length-1);
+		}
+  </script>
+  <a href="math-wls.html" align="center"><button>点我返回</button></a>
+  <wb:share-button appkey="2486522350" addition="simple" type="button" ralateUid="3257133522" default_text="今天我收到了来自赵佳成同学与众不同的教师节礼物，看看吧：http://www.techzjc.com/math-wls.html" language="zh_cn"></wb:share-button>
+  <noscript>
+<h1>ops:(</h1>
+<h2>你没有打开JavaScript!</h2>
+<h2>请按F5或刷新游览器，打开JavaScript后再试！</h2>
+<h3>注释：JavaScript为脚本文件</h3>
+<h3>如有疑惑，点这里！</h3>
+<p><a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=0a12db25d95c2aff860029b260e4dce9e60aa9d5cb016ca10f0df18fafa32e40"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="g497813927.com" title="g497813927.com"></a>
+</p>
+</noscript>
+ <p align="center">
+ 今日天气：
+<iframe allowtransparency="true" frameborder="0" width="385" height="96" scrolling="no" src="http://tianqi.2345.com/plugin/widget/index.htm?s=2&z=1&t=0&v=0&d=3&bd=0&k=&f=&q=1&e=1&a=1&c=54511&w=385&h=96&align=center"></iframe>
+ </p>
+  </body>
+</html>

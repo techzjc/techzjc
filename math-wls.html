@@ -1,0 +1,57 @@
+<!doctype html>
+<html xmlns:wb="http://open.weibo.com/wb">
+    <head>
+    <script type="application/javascript">
+		function closewin(){
+			window.opener=null;
+			window.open('','_self');
+			window.close();
+			}
+		</script>
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+        <title>hello！</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/jQuery-fullpage/jquery.fullPage.css">
+        <script src="/jQuery-fullpage/jquery-1.8.3.min.js"></script>
+        <script src="/jQuery-fullpage/jquery.fullPage.min.js"></script>
+        <script>
+            $(function(){
+                $('#dowebok').fullpage({
+                    sectionsColor:['#1bbc9b','#4BBFC3','#7BAABE','#f90','#f70','#d50']
+                });
+            });
+        </script>
+        <style>
+            .section{
+                text-align:center;
+                color:#fff;
+                font:50px 'Yahei';
+            }
+        </style>
+    </head>
+    <div id="dowebok">
+        <div class="section">
+            <h1>给您的</h1>
+            <h1>教师节礼物</h1>
+        </div>
+        <div class="section">
+            <h1>亲爱的王老师：</h1>
+        </div>
+        <div class="section">
+            <h1>祝你教师节快乐！</h1>
+            
+        </div>
+        <div class="section">
+            <h1>感谢您在这几年教我！</h1>
+        </div>
+        <div class="section">
+        <h1>对此，我特意给你准备了一个礼物</h1>
+        <a  href="calc.html"><h1><button>点我！</button></h1></a>
+        </div>
+        <div class="section">
+        <button onClick="closewin();">关闭窗口</button>
+        <wb:share-button appkey="2486522350" addition="simple" type="button" ralateUid="3257133522" default_text="今天我收到了来自赵佳成同学与众不同的教师节礼物，看看吧：http://www.techzjc.com/math-wls.html" language="zh_cn"></wb:share-button>
+        </div>
+    </div>
+    
+</html>

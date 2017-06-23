@@ -1,0 +1,58 @@
+<!doctype html>
+<html xmlns:wb="http://open.weibo.com/wb">
+    <head>
+        <title>hello！</title>
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+        <meta charset="utf-8">
+                <script type="application/javascript">
+		function closewin(){
+			window.opener=null;
+			window.open('','_self');
+			window.close();
+			}
+		</script>
+        <link rel="stylesheet" href="/jQuery-fullpage/jquery.fullPage.css">
+        <script src="/jQuery-fullpage/jquery-1.8.3.min.js"></script>
+        <script src="/jQuery-fullpage/jquery.fullPage.min.js"></script>
+        <script>
+            $(function(){
+                $('#dowebok').fullpage({
+                    sectionsColor:['#1bbc9b','#4BBFC3','#7BAABE','#f90','#1d4f5f']
+                });
+            });
+        </script>
+        <style>
+            .section{
+                text-align:center;
+                color:#fff;
+                font:30px 'Yahei';
+            }
+        </style>
+
+    </head>
+       <body>
+        <noscript>
+<h1>ops:(</h1><?php echo 出错了！ ?>
+<h2>你没有打开JavaScript!</h2>
+<h2>请按F5或刷新游览器，打开JavaScript后再试！</h2>
+<h3>注释：JavaScript为脚本文件</h3>
+<h3>如有疑惑，点这里！</h3>
+<a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=0a12db25d95c2aff860029b260e4dce9e60aa9d5cb016ca10f0df18fafa32e40"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="g497813927.com" title="g497813927.com"></a>
+</noscript>
+    <div id="dowebok">
+        <div class="section">
+            <h1>给您的</h1>
+            <h1>教师节礼物</h1>
+        </div>
+            <div class="section">
+            <h1>亲爱的胡老师:</h1></div>
+            <div class="section">
+            <p>在此，我祝您教师节快乐！</p></div>
+        <div class="section">
+        <button onClick="closewin();">关闭窗口</button>
+            <wb:share-button appkey="2486522350" addition="simple" type="button" ralateUid="3257133522" default_text="今天我收到了来自赵佳成同学与众不同的教师节礼物，看看吧：http://www.techzjc.com/it-wls.html" language="zh_cn"></wb:share-button>
+        </div>
+        </div>
+    </div>
+</body>
+</html>
